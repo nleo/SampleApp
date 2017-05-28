@@ -1,0 +1,11 @@
+---
+- hosts: railsapp
+  vars:
+    ruby_version: 2.4
+    postgresql_version: 9.6
+  roles:
+    - ruby
+    - postgresql
+    - ufw
+    - passenger
+    - logrotate
