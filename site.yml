@@ -3,9 +3,10 @@
   vars:
     ruby_version: 2.4
     postgresql_version: 9.6
+  remote_user: root
   roles:
     - ruby
     - postgresql
-    - ufw
-    - passenger
-    - logrotate
+    # - ufw
+    # - passenger
+    # - logrotate
