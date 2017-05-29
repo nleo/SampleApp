@@ -1,0 +1,14 @@
+---
+- name: Create deploy user
+  user:
+    name: "{{deploy_user}}"
+- name: Set hostname
+  hostname:
+    name: "{{app_name}}"
+- name: install prerequisites
+  apt: name={{ item }} state=latest
+  with_items:
+    - libpq-dev
+    - python-psycopg2
+  tags:
+    - packages

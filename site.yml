@@ -3,8 +3,15 @@
   vars:
     ruby_version: 2.4
     postgresql_version: 9.6
+    deploy_user: rails
+    app_name: SampleApp
+    app_path: /home/{{deploy_user}}/{{app_name}}
+    database: "{{app_name}}"
+    dbuser: "{{app_name}}"
+    dbpass: password
   remote_user: root
   roles:
+    - common
     - ruby
     - postgresql
     # - ufw

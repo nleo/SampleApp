@@ -11,3 +11,15 @@
   apt:
     name: postgresql-{{postgresql_version}}
     update_cache: yes
+- name: create db
+  become: true
+  become_user: postgres
+  postgresql_db:
+    name: "{{database}}"
+- name: add user
+  become: true
+  become_user: postgres
+  postgresql_user:
+    db: "{{database}}"
+    name: "{{dbuser}}"
+    password: "{{dbpass}}"
