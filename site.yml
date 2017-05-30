@@ -5,19 +5,19 @@
     postgresql_version: 9.6
     deploy_user: rails
     app_name: SampleApp
+    domain: site.example
     repo_url: git@github.com:nleo/SampleApp.git
     app_path: /home/{{deploy_user}}/{{app_name}}
     database: "{{app_name}}"
     dbuser: "{{app_name}}"
     dbpass: password
-    domain: site.example
   remote_user: root
   roles:
     - common
+    - bash
     - ruby
     - postgresql
     - { role: passenger, tags: [ 'passenger' ] }
-    # - bash
     # - deploy
     # - ufw
     # - logrotate

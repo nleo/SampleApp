@@ -1,0 +1,15 @@
+---
+- name: bashrc defaults
+  copy:
+    src: "{{ role_path }}/files/bashrc-defaults.sh"
+    dest: /etc/profile.d/defaults.sh
+    owner: root
+    group: root
+    mode: 0644
+- name: bashrc for rood
+  copy:
+    src: "{{ role_path }}/files/bashrc"
+    dest: /root/.bashrc
+    owner: root
+    group: root
+    mode: 0600
