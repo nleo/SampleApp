@@ -5,10 +5,16 @@
 - name: Set hostname
   hostname:
     name: "{{app_name}}"
-- name: install prerequisites
+- name: Upgrade all packages to the latest version
+  apt:
+    name: "*"
+    state: latest
+- name: install packages
   apt: name={{ item }} state=latest
   with_items:
     - libpq-dev
     - python-psycopg2
+    - apt-transport-https
+    - ca-certificates
   tags:
     - packages
