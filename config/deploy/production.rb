@@ -1,4 +1,4 @@
-server 'site.example', user: $ansible_vars[:deploy_user]
+server $ansible_vars[:domain], user: $ansible_vars[:deploy_user]
 
 # server-based syntax
 # ======================
