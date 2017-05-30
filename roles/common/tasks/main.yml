@@ -13,6 +13,12 @@
     - python-psycopg2
     - apt-transport-https
     - ca-certificates
+    - git
+    - build-essential
+    - patch
+    - zlib1g-dev
+    - liblzma-dev
+    - nodejs
   tags:
     - packages
 - name: Set authorized key ~/.ssh/id_rsa.pub

@@ -3,7 +3,6 @@
   apt_repository:
     repo: deb https://oss-binaries.phusionpassenger.com/apt/passenger {{ansible_distribution_release}} main
     state: present
-# apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys 561F9B9CAC40B2F7
 - name: Add Phusion Passenger repository key
   apt_key:
     keyserver: hkp://keyserver.ubuntu.com:80
@@ -15,3 +14,25 @@
   with_items:
     - nginx-extras
     - passenger
+- name: Enable Phusion Passenger
+  lineinfile:
+    path: /etc/nginx/nginx.conf
+    regexp: 'passenger\.conf'
+    line: 'include /etc/nginx/passenger.conf;'
+- name: Site config
+  blockinfile:
+    path: /etc/nginx/sites-enabled/{{app_name}}
+    block: |
+      server {
+        server_name {{domain}};
+        root {{app_path}}/current/public;
+        passenger_enabled on;
+        passenger_ruby /usr/bin/ruby;
+        passenger_sticky_sessions on;
+      }
+    create: yes
+- name: Restart nginx
+  systemd:
+    state: restarted
+    daemon_reload: yes
+    name: nginx
