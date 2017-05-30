@@ -14,7 +14,7 @@
     - common
     - ruby
     - postgresql
-    - passenger
-    # - deploy
+    - deploy
+    # - passenger
     # - ufw
     # - logrotate

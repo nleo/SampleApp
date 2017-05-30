@@ -1,0 +1,13 @@
+---
+- name: Synchronize code
+  tags: deploy
+  synchronize:
+    src: .
+    dest: "{{app_path}}"
+    rsync_opts:
+      # - "--filter=':- .gitignore'"
+      - "--exclude=.git"
+      - "--exclude=`ls-files --exclude-standard -oi --directory`"
+      # - "--exclude=log"
+      # - "--exclude=spec"
+      # - "--exclude='public/assets'"
