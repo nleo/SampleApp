@@ -17,6 +17,7 @@
     - ruby
     - postgresql
     - { role: passenger, tags: [ 'passenger' ] }
+    # - bash
     # - deploy
     # - ufw
     # - logrotate

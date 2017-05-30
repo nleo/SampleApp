@@ -19,6 +19,12 @@
     path: /etc/nginx/nginx.conf
     regexp: 'passenger\.conf'
     line: 'include /etc/nginx/passenger.conf;'
+- name: env PATH in nginx.conf for nodejs
+  lineinfile:
+    path: /etc/nginx/nginx.conf
+    line: 'env PATH;'
+    state: present
+    insertbefore: '^user'
 - name: Site config
   blockinfile:
     path: /etc/nginx/sites-enabled/{{app_name}}
@@ -28,6 +34,7 @@
         root {{app_path}}/current/public;
         passenger_enabled on;
         passenger_ruby /usr/bin/ruby;
+        passenger_nodejs /usr/bin/nodejs;
         passenger_sticky_sessions on;
       }
     create: yes
