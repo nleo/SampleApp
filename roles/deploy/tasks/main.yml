@@ -2,10 +2,11 @@
 - name: Synchronize code
   tags: deploy
   synchronize:
-    src: .
+    src: "{{playbook_dir}}/"
     dest: "{{app_path}}"
     rsync_opts:
       # - "--filter=':- .gitignore'"
+      - "--del"
       - "--exclude=.git"
       - "--exclude=`ls-files --exclude-standard -oi --directory`"
       # - "--exclude=log"

@@ -6,10 +6,6 @@
 - name: Set hostname
   hostname:
     name: "{{app_name}}"
-# - name: Upgrade all packages to the latest version
-#   apt:
-#     name: "*"
-#     state: latest
 - name: install packages
   apt: name={{ item }} state=latest
   with_items:
@@ -19,7 +15,7 @@
     - ca-certificates
   tags:
     - packages
-- name: Set authorized key took from file ~/.ssh/id_rsa.pub
+- name: Set authorized key ~/.ssh/id_rsa.pub
   authorized_key:
     user: "{{deploy_user}}"
     state: present
