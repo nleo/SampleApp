@@ -18,6 +18,7 @@
     - ruby
     - postgresql
     - { role: passenger, tags: [ 'passenger' ] }
+    - { role: logrotate, tags: [ 'logrotate' ] }
     # - deploy
     # - ufw
     # - logrotate

@@ -1,14 +1,14 @@
 ---
 - name: bashrc defaults
   copy:
-    src: "{{ role_path }}/files/bashrc-defaults.sh"
+    src: "{{role_path}}/files/bashrc-defaults.sh"
     dest: /etc/profile.d/defaults.sh
     owner: root
     group: root
     mode: 0644
-- name: bashrc for rood
+- name: bashrc for root
   copy:
-    src: "{{ role_path }}/files/bashrc"
+    src: "{{role_path}}/files/bashrc"
     dest: /root/.bashrc
     owner: root
     group: root
