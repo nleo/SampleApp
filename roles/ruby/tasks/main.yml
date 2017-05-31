@@ -10,9 +10,9 @@
   apt:
     name: ruby{{ruby_version}}-dev
     update_cache: yes
-# TODO not work
-- name: Install bundler NOT WORK
+- name: Install bundler
   gem:
     name: bundler
     state: latest
+    user_install: no
 
