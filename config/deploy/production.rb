@@ -1,4 +1,5 @@
-server $ansible_vars[:domain], user: $ansible_vars[:deploy_user]
+server $ansible_vars[:domain], user: $ansible_vars[:deploy_user],
+  roles: [:web, :app, :db], primary: true
 
 # server-based syntax
 # ======================
